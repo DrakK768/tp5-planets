@@ -8,7 +8,7 @@ public class PlanetManager : MonoBehaviour
     public event Action<DateTime> OnTimeChange;
     private DateTime date;
     public DateTime Date { 
-        get =>  date; 
+        get => date; 
         set {
             date = value;
             OnTimeChange?.Invoke(date);
