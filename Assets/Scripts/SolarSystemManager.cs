@@ -6,7 +6,6 @@ using UnityEngine;
 public class SolarSystemManager : MonoBehaviour
 {
     [SerializeField] List<Planet> planets = new List<Planet>();
-    DateTime date = new DateTime(2024, 10, 15);
 
     #region unity
     void Awake()
@@ -17,15 +16,14 @@ public class SolarSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelData.planetManager.Date = date;
+        LevelData.planetManager.Date = new DateTime(2024, 10, 15);
         LevelData.planetManager.OnTimeChange += UpdatePosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        date = date.AddDays(1);
-        LevelData.planetManager.Date = date;
+        LevelData.planetManager.Date = LevelData.planetManager.Date.AddDays(1);
     }
 
     void OnDestroy()
@@ -39,6 +37,14 @@ public class SolarSystemManager : MonoBehaviour
         foreach (Planet planet in planets)
         {
             planet.transform.position = PlanetData.GetPlanetPosition(planet.GetPlanet(), t);
+        }
+    }
+
+    public void DisplayTrajectories(bool visible)
+    {
+        foreach (Planet planet in planets)
+        {
+            planet.DisplayTrajectory(visible);
         }
     }
 }

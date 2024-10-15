@@ -68,7 +68,7 @@ public static class PlanetData
             + Mathf.Cos(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * incl) * y_prime);
     }
 
-    private static float[] GetKeplerParameter(Planet planet, KeplerParameter param)
+    public static float[] GetKeplerParameter(Planet planet, KeplerParameter param)
     {
         switch (planet)
         {
