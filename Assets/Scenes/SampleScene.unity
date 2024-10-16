@@ -709,13 +709,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1051,13 +1051,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1355,13 +1355,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1885,13 +1885,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2573,7 +2573,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1844823801}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
       propertyPath: m_LocalScale.x
@@ -3056,13 +3056,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3373,13 +3373,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3599,9 +3599,6 @@ MonoBehaviour:
   mouseClick: {fileID: -6567384879678898845, guid: 4d395d64229b3ce4f9057ce456f4fcc2, type: 3}
   mouseDelta: {fileID: -2665872298680791803, guid: 4d395d64229b3ce4f9057ce456f4fcc2, type: 3}
   mouseScrollWheel: {fileID: -458628931563945112, guid: 4d395d64229b3ce4f9057ce456f4fcc2, type: 3}
-  rotationSpeed: 10
-  scrollSpeed: 1
-  slowDownFactor: 5
 --- !u!114 &1821889863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3702,13 +3699,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3788,7 +3785,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2025794262}
   - {fileID: 1832800592}
   - {fileID: 580817896}
   - {fileID: 1561838074}
@@ -4005,13 +4001,13 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06603813
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -4208,6 +4204,7 @@ GameObject:
   - component: {fileID: 1891099626}
   - component: {fileID: 1891099625}
   - component: {fileID: 1891099624}
+  - component: {fileID: 1891099627}
   m_Layer: 5
   m_Name: ControlPanel
   m_TagString: Untagged
@@ -4305,6 +4302,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891099622}
   m_CullTransparentMesh: 1
+--- !u!114 &1891099627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891099622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be89fd10d164b964c8e50a07e4eae058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realScaleCheckBox: {fileID: 68763644}
 --- !u!1 &1918148996
 GameObject:
   m_ObjectHideFlags: 0
@@ -4726,11 +4736,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &2025794262 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
-  m_PrefabInstance: {fileID: 1358223097}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2025794263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4843,6 +4848,7 @@ SceneRoots:
   - {fileID: 1440689188}
   - {fileID: 1044347915}
   - {fileID: 1821889861}
+  - {fileID: 1358223097}
   - {fileID: 1844823801}
   - {fileID: 1998791743}
   - {fileID: 1041442575}

@@ -19,7 +19,7 @@ public class SolarSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelData.planetManager.Date = new DateTime(2024, 10, 15);
+        LevelData.planetManager.Date = DateTime.Now;
         LevelData.planetManager.OnTimeChange += UpdatePosition;
         DisplayRealSizes(false); // to correctly set planets' scale relative to each other
     }
