@@ -21,6 +21,7 @@ public class SolarSystemManager : MonoBehaviour
     {
         LevelData.planetManager.Date = new DateTime(2024, 10, 15);
         LevelData.planetManager.OnTimeChange += UpdatePosition;
+        DisplayRealSizes(false); // to correctly set planets' scale relative to each other
     }
 
     // Update is called once per frame
@@ -51,7 +52,7 @@ public class SolarSystemManager : MonoBehaviour
 
     public void DisplayRealSizes(bool visible)
     {
-        float targetScale = visible ? sun.GetSOSun().radius * PlanetData.kmToAu : 0.2f;
+        float targetScale = visible ? sun.GetSOSun().radius / PlanetData.kmToAu : 0.2f;
         sun.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         foreach (Planet planet in planets)
         {
@@ -63,6 +64,7 @@ public class SolarSystemManager : MonoBehaviour
     public void SetScale(float scale)
     {
         scaleFactor = scale;
+        LevelData.controlsView.CheckRealScale(false);
         DisplayRealSizes(false);
     }
 }
