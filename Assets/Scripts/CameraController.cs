@@ -9,8 +9,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] InputActionReference mouseClick;
     [SerializeField] InputActionReference mouseDelta;
     [SerializeField] InputActionReference mouseScrollWheel;
-    [SerializeField] float rotationSpeed = 10f;
-    [SerializeField] float scrollSpeed = 1.0f;
+    float rotationSpeed = 10f;
+    float scrollSpeed = 1.0f;
+    float slowDownFactor = 50f;
     Camera cam;
     bool isMouseClicked;
     bool isMoving;
@@ -48,7 +49,12 @@ public class CameraController : MonoBehaviour
         Vector2 scroll = mouseScrollWheel.action.ReadValue<Vector2>();
         if (scroll != Vector2.zero)
         {
-            cam.transform.Translate(new Vector3(0, 0, scroll.y * Time.deltaTime * scrollSpeed), cam.transform);
+            float distanceToZero = cam.transform.position.magnitude;
+            if (distanceToZero > 0.01f || scroll.y < 0)
+            {
+                float ajustedSpeed = scrollSpeed * (distanceToZero / slowDownFactor);
+                cam.transform.Translate(new Vector3(0, 0, scroll.y * Time.deltaTime * ajustedSpeed), cam.transform);
+            }
         }
     }
 }
