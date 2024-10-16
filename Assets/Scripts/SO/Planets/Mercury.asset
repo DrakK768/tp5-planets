@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3107ba315624a034d852cd9f0c10496e, type: 3}
+  m_Name: Mercury
+  m_EditorClassIdentifier: 
+  planet: 0
+  mass: 3.301e+23
+  volume: 6.083e+10
+  radius: 2439.7
+  ellipticity: 0.0009
+  meanDensity: 5429
+  meanGravity: 3.7
+  meanTemp: 167
+  numberOfSatellites: 0
+  isRingSystem: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
@@ -11,12 +12,16 @@ public class CameraController : MonoBehaviour
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float scrollSpeed = 1.0f;
     Camera cam;
+    bool isMouseClicked;
+    bool isMoving;
 
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        mouseClick.action.started += (ctx) => isMouseClicked = true;
+        // no need to set it back to false on release
     }
 
     // Update is called once per frame
@@ -27,7 +32,12 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (mouseClick.action.IsPressed())
+        if (isMouseClicked)
+        {
+            isMoving = !EventSystem.current.IsPointerOverGameObject();
+            isMouseClicked = false;
+        }
+        if (mouseClick.action.IsPressed() && isMoving)
         {
             Vector2 delta = mouseDelta.action.ReadValue<Vector2>();
             Vector3 angles = new Vector3(-delta.y, delta.x, 0) * rotationSpeed * Time.deltaTime;

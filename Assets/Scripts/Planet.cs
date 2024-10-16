@@ -6,7 +6,7 @@ using static PlanetData;
 
 public class Planet : MonoBehaviour
 {
-    [SerializeField] PlanetData.Planet planet;
+    [SerializeField] SOPlanet soPlanet;
     private LineRenderer lineRenderer;
     private int segments = 100;
 
@@ -32,8 +32,8 @@ public class Planet : MonoBehaviour
         float angle = 0f;
         for (int i = 0; i <= segments; i++)
         {
-            float a = GetKeplerParameter(planet, KeplerParameter.a)[0];
-            float e = GetKeplerParameter(planet, KeplerParameter.e)[0];
+            float a = GetKeplerParameter(soPlanet.planet, KeplerParameter.a)[0];
+            float e = GetKeplerParameter(soPlanet.planet, KeplerParameter.e)[0];
             float r = (a*(1-Mathf.Pow(e, 2)) / (1 + e*Mathf.Cos(angle)));
             float x = Mathf.Cos(angle) * r;
             float y = Mathf.Sin(angle) * r;
@@ -50,8 +50,8 @@ public class Planet : MonoBehaviour
         lineRenderer.enabled = visible;
     }
 
-    public PlanetData.Planet GetPlanet()
+    public SOPlanet GetPlanetData()
     {
-        return planet;
+        return soPlanet;
     }
 }

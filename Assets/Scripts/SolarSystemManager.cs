@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SolarSystemManager : MonoBehaviour
 {
+    [SerializeField] Sun sun;
     [SerializeField] List<Planet> planets = new List<Planet>();
+    float scaleFactor = 1000f;
 
     #region unity
     void Awake()
@@ -36,15 +39,30 @@ public class SolarSystemManager : MonoBehaviour
     {
         foreach (Planet planet in planets)
         {
-            planet.transform.position = PlanetData.GetPlanetPosition(planet.GetPlanet(), t);
+            planet.transform.position = PlanetData.GetPlanetPosition(planet.GetPlanetData().planet, t);
         }
     }
 
     public void DisplayTrajectories(bool visible)
     {
         foreach (Planet planet in planets)
-        {
             planet.DisplayTrajectory(visible);
+    }
+
+    public void DisplayRealSizes(bool visible)
+    {
+        float targetScale = visible ? sun.GetSOSun().radius * PlanetData.kmToAu : 0.2f;
+        sun.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+        foreach (Planet planet in planets)
+        {
+            targetScale = PlanetData.GetPlanetRealSize(planet.GetPlanetData()) * (visible ? 1f : scaleFactor);  
+            planet.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         }
+    }
+
+    public void SetScale(float scale)
+    {
+        scaleFactor = scale;
+        DisplayRealSizes(false);
     }
 }

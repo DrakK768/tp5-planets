@@ -242,7 +242,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044347916}
+        m_TargetAssemblyTypeName: SolarSystemManager, Assembly-CSharp
+        m_MethodName: DisplayRealSizes
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &135770810
 GameObject:
@@ -333,15 +345,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643521465287934, guid: 300f80108a63f48618cb4a1c8b8c1e86, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4643521465287934, guid: 300f80108a63f48618cb4a1c8b8c1e86, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4643521465287934, guid: 300f80108a63f48618cb4a1c8b8c1e86, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4643521465287934, guid: 300f80108a63f48618cb4a1c8b8c1e86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -487,15 +499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4387678931267766, guid: 1818e1a170ef94c3aacee2ba50057521, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4387678931267766, guid: 1818e1a170ef94c3aacee2ba50057521, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4387678931267766, guid: 1818e1a170ef94c3aacee2ba50057521, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4387678931267766, guid: 1818e1a170ef94c3aacee2ba50057521, type: 3}
       propertyPath: m_LocalPosition.x
@@ -649,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 1
+  soPlanet: {fileID: 11400000, guid: eda5f72215b180e4b88244ff35d64424, type: 2}
 --- !u!120 &580817900
 LineRenderer:
   serializedVersion: 2
@@ -991,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 6
+  soPlanet: {fileID: 11400000, guid: d0649a3fb54bbf3448239811721bf64e, type: 2}
 --- !u!120 &709478343
 LineRenderer:
   serializedVersion: 2
@@ -1179,13 +1191,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1688306208}
   m_HandleRect: {fileID: 135770811}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 500
+  m_MaxValue: 7000
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1000
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044347916}
+        m_TargetAssemblyTypeName: SolarSystemManager, Assembly-CSharp
+        m_MethodName: SetScale
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &741563357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 4
+  soPlanet: {fileID: 11400000, guid: a671429fa22c062418b2b516ec1ea43f, type: 2}
 --- !u!120 &746257905
 LineRenderer:
   serializedVersion: 2
@@ -1402,15 +1426,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4677324220665258, guid: b4201d402613a4464b35c805dafcca62, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4677324220665258, guid: b4201d402613a4464b35c805dafcca62, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4677324220665258, guid: b4201d402613a4464b35c805dafcca62, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4677324220665258, guid: b4201d402613a4464b35c805dafcca62, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1481,15 +1505,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799057029891002, guid: c91342f6e3afc48fd958056404ead345, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4799057029891002, guid: c91342f6e3afc48fd958056404ead345, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4799057029891002, guid: c91342f6e3afc48fd958056404ead345, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4799057029891002, guid: c91342f6e3afc48fd958056404ead345, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1813,7 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 7
+  soPlanet: {fileID: 11400000, guid: 7537496bbe1d8f447a2865e4a2144a90, type: 2}
 --- !u!120 &1043056255
 LineRenderer:
   serializedVersion: 2
@@ -1962,6 +1986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a44d3df3f3773a4ca3421b7fffb5bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sun: {fileID: 2025794263}
   planets:
   - {fileID: 1832800593}
   - {fileID: 580817897}
@@ -1985,15 +2010,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024914263291546, guid: 835acc1a9ebe24c0fa3854c99346f9cd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4024914263291546, guid: 835acc1a9ebe24c0fa3854c99346f9cd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4024914263291546, guid: 835acc1a9ebe24c0fa3854c99346f9cd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4024914263291546, guid: 835acc1a9ebe24c0fa3854c99346f9cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2552,15 +2577,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2625,6 +2650,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3548356298615962880, guid: 5f776740c447e45afb25edbca842de92, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2025794260}
+    - targetCorrespondingSourceObject: {fileID: 3548356298615962880, guid: 5f776740c447e45afb25edbca842de92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2025794263}
   m_SourcePrefab: {fileID: 100100000, guid: 5f776740c447e45afb25edbca842de92, type: 3}
 --- !u!1 &1440689186
 GameObject:
@@ -2759,15 +2787,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4431810912100570, guid: 5d1442ad8c11442988e0eca5d8af73f0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4431810912100570, guid: 5d1442ad8c11442988e0eca5d8af73f0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4431810912100570, guid: 5d1442ad8c11442988e0eca5d8af73f0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4431810912100570, guid: 5d1442ad8c11442988e0eca5d8af73f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2980,7 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 2
+  soPlanet: {fileID: 11400000, guid: 7219b9d7268e47c4f95032631f0b2aa9, type: 2}
 --- !u!120 &1561838078
 LineRenderer:
   serializedVersion: 2
@@ -3135,15 +3163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4030326048459444, guid: 7e4bfb3c6ba1d4bc4ba31d585abdae0f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4030326048459444, guid: 7e4bfb3c6ba1d4bc4ba31d585abdae0f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4030326048459444, guid: 7e4bfb3c6ba1d4bc4ba31d585abdae0f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4030326048459444, guid: 7e4bfb3c6ba1d4bc4ba31d585abdae0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3297,7 +3325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 5
+  soPlanet: {fileID: 11400000, guid: 9df886b4b697fc64cb356118d17c1b14, type: 2}
 --- !u!120 &1817870208
 LineRenderer:
   serializedVersion: 2
@@ -3625,7 +3653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 0
+  soPlanet: {fileID: 11400000, guid: 34b0d5262db7982459c1283aa481c9e2, type: 2}
 --- !u!120 &1832800596
 LineRenderer:
   serializedVersion: 2
@@ -3927,7 +3955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1aa8c93eed89448b9b63e63e4d54e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: 3
+  soPlanet: {fileID: 11400000, guid: 2ae6f4ef446b25746816725817b078af, type: 2}
 --- !u!120 &1863587318
 LineRenderer:
   serializedVersion: 2
@@ -4564,15 +4592,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620931210112870, guid: ab152f61198d54532ae39108e616ff59, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4620931210112870, guid: ab152f61198d54532ae39108e616ff59, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4620931210112870, guid: ab152f61198d54532ae39108e616ff59, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4620931210112870, guid: ab152f61198d54532ae39108e616ff59, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4647,7 +4675,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 3
-  m_Range: 10
+  m_Range: 40
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -4696,6 +4724,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2025794263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025794257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca710bfc8b841dc4cba2f3fa593f53c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soSun: {fileID: 11400000, guid: 1dc97afbc76fc244c868a21881939b0a, type: 2}
 --- !u!1 &2078868192
 GameObject:
   m_ObjectHideFlags: 0

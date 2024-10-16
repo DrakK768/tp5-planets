@@ -8,6 +8,8 @@ public static class PlanetData
     public enum Planet { Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune }
     public enum KeplerParameter { a, e, I, L, longPeri, longNode, b, c, s, f}
 
+    public static float kmToAu = 149597870.7f;
+
     /// <summary>
     /// Get planet coordinates at a given time (in AU)
     /// </summary>
@@ -66,6 +68,11 @@ public static class PlanetData
             + (-Mathf.Sin(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * longNode) + Mathf.Cos(Mathf.Deg2Rad * peri) * Mathf.Cos(Mathf.Deg2Rad * longNode) * Mathf.Cos(Mathf.Deg2Rad * incl)) * y_prime,
             Mathf.Sin(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * incl) * x_prime
             + Mathf.Cos(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * incl) * y_prime);
+    }
+
+    public static float GetPlanetRealSize(SOPlanet planet)
+    {
+        return planet.radius / kmToAu;
     }
 
     public static float[] GetKeplerParameter(Planet planet, KeplerParameter param)
