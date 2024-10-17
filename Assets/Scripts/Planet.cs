@@ -7,6 +7,7 @@ using static PlanetData;
 public class Planet : MonoBehaviour
 {
     [SerializeField] SOPlanet soPlanet;
+    public SOPlanet SoPlanet => soPlanet;
     private LineRenderer lineRenderer;
     private int segments = 200;
 
@@ -67,10 +68,5 @@ public class Planet : MonoBehaviour
     public void DisplayTrajectory(bool visible)
     {
         lineRenderer.enabled = visible;
-    }
-
-    public SOPlanet GetPlanetData()
-    {
-        return soPlanet;
     }
 }

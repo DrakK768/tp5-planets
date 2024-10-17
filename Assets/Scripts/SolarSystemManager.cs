@@ -9,6 +9,11 @@ public class SolarSystemManager : MonoBehaviour
     [SerializeField] Sun sun;
     [SerializeField] List<Planet> planets = new List<Planet>();
     float scaleFactor = 1000f;
+    int daysPerFrame = 1;
+    public int DaysPerFrame
+    {
+        set => daysPerFrame = value;
+    }
 
     #region unity
     void Awake()
@@ -27,7 +32,8 @@ public class SolarSystemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LevelData.planetManager.Date = LevelData.planetManager.Date.AddDays(1);
+        if (daysPerFrame != 0)
+            LevelData.planetManager.Date = LevelData.planetManager.Date.AddDays(daysPerFrame);
     }
 
     void OnDestroy()
@@ -40,7 +46,7 @@ public class SolarSystemManager : MonoBehaviour
     {
         foreach (Planet planet in planets)
         {
-            planet.transform.position = PlanetData.GetPlanetPosition(planet.GetPlanetData().planet, t);
+            planet.transform.position = PlanetData.GetPlanetPosition(planet.SoPlanet.planet, t);
         }
     }
 
@@ -56,7 +62,7 @@ public class SolarSystemManager : MonoBehaviour
         sun.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         foreach (Planet planet in planets)
         {
-            targetScale = PlanetData.GetPlanetRealSize(planet.GetPlanetData()) * (visible ? 1f : scaleFactor);  
+            targetScale = PlanetData.GetPlanetRealSize(planet.SoPlanet) * (visible ? 1f : scaleFactor);  
             planet.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         }
     }
