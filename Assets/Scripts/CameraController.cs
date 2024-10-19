@@ -14,9 +14,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] InputActionReference mouseClick;
     [SerializeField] InputActionReference mouseDelta;
     [SerializeField] InputActionReference mouseScrollWheel;
-    [SerializeField] PlanetInfoView planetInfoView;
+    [SerializeField] CelestialInfoView celestialInfoView;
     CinemachineVirtualCamera currVCam;
-    Planet currPlanetInFocus = null;
+    Interactable currCelestialInFocus = null;
     float rotationSpeed = 10f;
     float scrollSpeed = 1.0f;
     float slowDownFactor = 50f;
@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour
             isMouseClicked = false;
         }
 
-        Vector3 currVCamCenterPoint = (currPlanetInFocus == null ? Vector3.zero : currPlanetInFocus.transform.position);
+        Vector3 currVCamCenterPoint = (currCelestialInFocus == null ? Vector3.zero : currCelestialInFocus.transform.position);
 
         // Cam mouvement around a planet/sun
         if (mouseClick.action.IsPressed() && isMoving)
@@ -79,21 +79,20 @@ public class CameraController : MonoBehaviour
         LevelData.cameraController = null;
     }
 
-    //TODO: Support for Sun too
-    public void FocusOn(Planet planet)
+    public void FocusOn(Interactable celestial)
     {
-        if (planet == currPlanetInFocus) return;
+        if (celestial == currCelestialInFocus) return;
 
-        bool isPlanetNull = (planet == null);
+        bool isPlanetNull = (celestial == null);
         
         if (!isPlanetNull)
         {
             // If a planet is selected, set subCam to this planet
-            planetVCam1.transform.SetParent(planet.transform);
+            planetVCam1.transform.SetParent(celestial.transform);
             planetVCam1.transform.localScale = new Vector3(1, 1, 1);
-            planetVCam1.transform.localPosition = (mainVCam.transform.position - planet.transform.position).normalized * 2;
-            planetVCam1.transform.LookAt(planet.transform.position);
-            planetInfoView.SetPlanetInfo(planet.SoPlanet);
+            planetVCam1.transform.localPosition = (mainVCam.transform.position - celestial.transform.position).normalized * 2;
+            planetVCam1.transform.LookAt(celestial.transform.position);
+            celestialInfoView.SetPlanetInfo(celestial.SoCelestial);
         }
 
         // Set which cam is active depending on selection (bigger priority = active cam)
@@ -101,7 +100,7 @@ public class CameraController : MonoBehaviour
         mainVCam.Priority = (isPlanetNull ? 10 : 1);
 
         // Set variables to move the right cam correctly
-        currPlanetInFocus = planet;
+        currCelestialInFocus = celestial;
         currVCam = (isPlanetNull ? mainVCam : planetVCam1);
     }
 }

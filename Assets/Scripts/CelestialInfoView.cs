@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlanetInfoView : MonoBehaviour
+public class CelestialInfoView : MonoBehaviour
 {
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text facts;
@@ -27,7 +27,7 @@ public class PlanetInfoView : MonoBehaviour
         
     }
 
-    public void SetPlanetInfo(SOPlanet planet)
+    public void SetPlanetInfo(SOCelestial planet)
     {
         title.text = planet.name;
         string factsText = "";

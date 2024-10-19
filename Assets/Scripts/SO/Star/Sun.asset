@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07343701e917be146b453b3a296386ca, type: 3}
   m_Name: Sun
   m_EditorClassIdentifier: 
-  starName: Sun
+  facts:
+  - A massive star at the center of the solar system.
+  - "Comprises 99.8% of the system\u2019s mass."
+  - Powers the planets with light and heat.
+  - Gravity keeps all planets in orbit.
   mass: 1.9884e+30
   volume: 1.412e+18
   radius: 695700
   ellipticity: 0.00005
   meanDensity: 1408
   meanGravity: 274
+  meanTemp: 15000000
   numberOfSatellites: 0
   isRingSystem: 0
+  starName: Sun

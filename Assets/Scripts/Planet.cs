@@ -29,14 +29,6 @@ public class Planet : MonoBehaviour
     }
     #endregion
 
-    void OnMouseUpAsButton()
-    {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            LevelData.cameraController.FocusOn(this);
-        }
-    }
-
     void DrawEllipse()
     {
         float angle = 0f;

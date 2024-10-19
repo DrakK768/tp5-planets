@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SolarSystemManager : MonoBehaviour
 {
-    [SerializeField] Sun sun;
+    [SerializeField] Interactable sun;
     [SerializeField] List<Planet> planets = new List<Planet>();
     float scaleFactor = 1000f;
     int daysPerFrame = 1;
@@ -60,7 +60,7 @@ public class SolarSystemManager : MonoBehaviour
     // Linked to show real sizes's checkbox
     public void DisplayRealSizes(bool visible)
     {
-        float targetScale = visible ? sun.GetSOSun().radius / PlanetData.kmToAu : 0.2f;
+        float targetScale = visible ? sun.SoCelestial.radius / PlanetData.kmToAu : 0.2f;
         sun.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         foreach (Planet planet in planets)
         {
