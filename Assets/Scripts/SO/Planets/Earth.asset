@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   planet: 2
+  facts:
+  - The only planet known to support life.
+  - Has a protective atmosphere, liquid water, and diverse ecosystems.
+  - Its climate and life forms are sustained by the sun and its magnetic field.
   mass: 5.9722e+24
   volume: 1.08321e+12
   radius: 6371

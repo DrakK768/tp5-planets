@@ -6,6 +6,7 @@ using UnityEngine;
 public class SOPlanet : ScriptableObject
 {
     public PlanetData.Planet planet;
+    public List<string> facts;
     [Header("Bulk parameters")]
     [Tooltip("Mass in kg")]
     public float mass;

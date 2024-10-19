@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Neptune
   m_EditorClassIdentifier: 
   planet: 7
+  facts:
+  - The farthest planet from the Sun, known for its striking blue color.
+  - It has the strongest winds in the solar system, reaching speeds of over 1,600
+    km/h (1,000 mph).
+  - Its largest moon, Triton, has geysers that shoot nitrogen gas into space.
   mass: 1.02409e+26
   volume: 6.254e+13
   radius: 24622

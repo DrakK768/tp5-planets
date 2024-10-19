@@ -52,6 +52,7 @@ public class ControlsView : MonoBehaviour
         realScaleCheckBox.isOn = isChecked;
     }
 
+    // Linked to backwards button (speed = -4) and to forwards button (speed = 4)
     public void SetSpeed(int speed)
     {
         isPaused = (speed == 0);
@@ -59,6 +60,7 @@ public class ControlsView : MonoBehaviour
         LevelData.solarSystemManager.DaysPerFrame = speed;
     }
 
+    // Linked to play/pause button
     public void PlayPauseBtnHandler()
     {
         SetSpeed(isPaused ? 1 : 0);

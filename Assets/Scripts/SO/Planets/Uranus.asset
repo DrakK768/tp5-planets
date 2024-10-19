@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Uranus
   m_EditorClassIdentifier: 
   planet: 6
+  facts:
+  - A blue-green ice giant due to methane in its atmosphere.
+  - Unique for rotating on its side, likely due to a massive collision in its past.
+  - Has a faint ring system and 27 moons.
   mass: 8.6811e+25
   volume: 6.833e+13
   radius: 25362

@@ -50,12 +50,14 @@ public class SolarSystemManager : MonoBehaviour
         }
     }
 
+    // Linked to show trajectories's checkbox
     public void DisplayTrajectories(bool visible)
     {
         foreach (Planet planet in planets)
             planet.DisplayTrajectory(visible);
     }
 
+    // Linked to show real sizes's checkbox
     public void DisplayRealSizes(bool visible)
     {
         float targetScale = visible ? sun.GetSOSun().radius / PlanetData.kmToAu : 0.2f;
@@ -67,6 +69,7 @@ public class SolarSystemManager : MonoBehaviour
         }
     }
 
+    // Linked to scale selector slider
     public void SetScale(float scale)
     {
         scaleFactor = scale;

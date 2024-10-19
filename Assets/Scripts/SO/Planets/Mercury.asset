@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Mercury
   m_EditorClassIdentifier: 
   planet: 0
+  facts:
+  - Smallest Planet and the closest to the Sun.
+  - It has extreme temperature variations, with scorching days and freezing nights.
+  - No atmosphere to retain heat, and its surface is heavily cratered.
   mass: 3.301e+23
   volume: 6.083e+10
   radius: 2439.7

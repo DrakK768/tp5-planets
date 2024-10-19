@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Saturn
   m_EditorClassIdentifier: 
   planet: 5
+  facts:
+  - Known for its stunning ring system, made of ice, rock, and dust particles.
+  - Like Jupiter, it is a gas giant, with hydrogen and helium making up most of its
+    atmosphere.
+  - "Titan, one of Saturn\u2019s moons, has rivers and lakes of liquid methane."
   mass: 5.6832e+26
   volume: 8.3713e+14
   radius: 58232

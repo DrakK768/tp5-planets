@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static PlanetData;
 
 public static class PlanetData
 {
@@ -68,6 +69,39 @@ public static class PlanetData
             + (-Mathf.Sin(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * longNode) + Mathf.Cos(Mathf.Deg2Rad * peri) * Mathf.Cos(Mathf.Deg2Rad * longNode) * Mathf.Cos(Mathf.Deg2Rad * incl)) * y_prime,
             Mathf.Sin(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * incl) * x_prime
             + Mathf.Cos(Mathf.Deg2Rad * peri) * Mathf.Sin(Mathf.Deg2Rad * incl) * y_prime);
+    }
+
+    // Calculate trajectory using Kepler parameters
+    // from https://learn.andoyaspace.no/ebook/student-rocket-pre-study/satellite-orbits/introduction-of-the-six-basic-parameters-describing-satellite-orbits/
+    // variance of time not taken into account
+    public static Vector3 GetPlanetPosition(Planet p, float angle)
+    {
+        float a = GetKeplerParameter(p, KeplerParameter.a)[0];
+        float e = GetKeplerParameter(p, KeplerParameter.e)[0];
+        float I = GetKeplerParameter(p, KeplerParameter.I)[0] * Mathf.Deg2Rad;
+        float lNode = GetKeplerParameter(p, KeplerParameter.longNode)[0] * Mathf.Deg2Rad;
+        float lPeri = GetKeplerParameter(p, KeplerParameter.longPeri)[0] * Mathf.Deg2Rad;
+        float peri = lPeri - lNode;
+        float r = (a * (1 - Mathf.Pow(e, 2)) / (1 + e * Mathf.Cos(angle)));
+        float x = Mathf.Cos(angle) * r;
+        float y = Mathf.Sin(angle) * r;
+
+        // 1. Rotate by lPeri (argument of periapsis) around the Z-axis
+        float x_peri = x * Mathf.Cos(peri) - y * Mathf.Sin(peri);
+        float y_peri = x * Mathf.Sin(peri) + y * Mathf.Cos(peri);
+        float z_peri = 0;  // No change in z for this rotation
+
+        // 2. Rotate by i (inclination) around the X-axis
+        float x_incl = x_peri;
+        float y_incl = y_peri * Mathf.Cos(I) - z_peri * Mathf.Sin(I);
+        float z_incl = y_peri * Mathf.Sin(I) + z_peri * Mathf.Cos(I);
+
+        // 3. Rotate by lNode (longitude of ascending node) around the Z-axis
+        float x_orbit = x_incl * Mathf.Cos(lNode) - y_incl * Mathf.Sin(lNode);
+        float y_orbit = x_incl * Mathf.Sin(lNode) + y_incl * Mathf.Cos(lNode);
+        float z_orbit = z_incl;
+
+        return new Vector3(x_orbit, y_orbit, z_orbit);
     }
 
     public static float[] GetKeplerParameter(Planet planet, KeplerParameter param)

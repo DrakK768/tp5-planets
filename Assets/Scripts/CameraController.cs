@@ -9,10 +9,14 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera mainVCam;
+    //TODO: pass from one planet to another directly (will need 2 planetVCam for smooth transition)
     [SerializeField] CinemachineVirtualCamera planetVCam1;
     [SerializeField] InputActionReference mouseClick;
     [SerializeField] InputActionReference mouseDelta;
     [SerializeField] InputActionReference mouseScrollWheel;
+    [SerializeField] PlanetInfoView planetInfoView;
+    CinemachineVirtualCamera currVCam;
+    Planet currPlanetInFocus = null;
     float rotationSpeed = 10f;
     float scrollSpeed = 1.0f;
     float slowDownFactor = 50f;
@@ -27,8 +31,8 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currVCam = mainVCam;
         mouseClick.action.started += (ctx) => isMouseClicked = true;
-        // no need to set it back to false on release
     }
 
     // Update is called once per frame
@@ -39,29 +43,33 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        // Mouse Click handler is late to avoid warning (bc UI elements are not yet processed when mouseClick action triggers)
         if (isMouseClicked)
         {
-            isMoving = !EventSystem.current.IsPointerOverGameObject();
+            isMoving = !EventSystem.current.IsPointerOverGameObject(); // Prevents moving when interacting with UI
             isMouseClicked = false;
         }
+
+        Vector3 currVCamCenterPoint = (currPlanetInFocus == null ? Vector3.zero : currPlanetInFocus.transform.position);
+
+        // Cam mouvement around a planet/sun
         if (mouseClick.action.IsPressed() && isMoving)
         {
-            planetVCam1.Priority = 1;
-            mainVCam.Priority = 10;
             Vector2 delta = mouseDelta.action.ReadValue<Vector2>();
             Vector3 angles = new Vector3(-delta.y, delta.x, 0) * rotationSpeed * Time.deltaTime;
-            mainVCam.transform.RotateAround(Vector3.zero, mainVCam.transform.up, angles.y);
-            mainVCam.transform.RotateAround(Vector3.zero, mainVCam.transform.right, angles.x);
+            currVCam.transform.RotateAround(currVCamCenterPoint, currVCam.transform.up, angles.y);
+            currVCam.transform.RotateAround(currVCamCenterPoint, currVCam.transform.right, angles.x);
         }
 
+        // Zoom handling (non linear, scaling with distance to sun)
         Vector2 scroll = mouseScrollWheel.action.ReadValue<Vector2>();
         if (scroll != Vector2.zero)
         {
-            float distanceToZero = mainVCam.transform.position.magnitude;
-            if (distanceToZero > 0.01f || scroll.y < 0)
+            float distanceToCenterPoint = (currVCam.transform.position - currVCamCenterPoint).magnitude;
+            if (distanceToCenterPoint > 0.01f || scroll.y < 0) // Doesn't scroll farther if distance < 0.01
             {
-                float ajustedSpeed = scrollSpeed * (distanceToZero / slowDownFactor);
-                mainVCam.transform.Translate(new Vector3(0, 0, scroll.y * Time.deltaTime * ajustedSpeed), mainVCam.transform);
+                float ajustedSpeed = scrollSpeed * (distanceToCenterPoint / slowDownFactor);
+                currVCam.transform.Translate(new Vector3(0, 0, scroll.y * Time.deltaTime * ajustedSpeed), currVCam.transform);
             }
         }
     }
@@ -71,12 +79,29 @@ public class CameraController : MonoBehaviour
         LevelData.cameraController = null;
     }
 
+    //TODO: Support for Sun too
     public void FocusOn(Planet planet)
     {
-        planetVCam1.transform.SetParent(planet.transform);
-        planetVCam1.transform.localRotation = mainVCam.transform.rotation;
-        planetVCam1.transform.localPosition = new Vector3(0, 0, planet.GetComponent<SphereCollider>().radius);
-        planetVCam1.Priority = 10;
-        mainVCam.Priority = 1;
+        if (planet == currPlanetInFocus) return;
+
+        bool isPlanetNull = (planet == null);
+        
+        if (!isPlanetNull)
+        {
+            // If a planet is selected, set subCam to this planet
+            planetVCam1.transform.SetParent(planet.transform);
+            planetVCam1.transform.localScale = new Vector3(1, 1, 1);
+            planetVCam1.transform.localPosition = (mainVCam.transform.position - planet.transform.position).normalized * 2;
+            planetVCam1.transform.LookAt(planet.transform.position);
+            planetInfoView.SetPlanetInfo(planet.SoPlanet);
+        }
+
+        // Set which cam is active depending on selection (bigger priority = active cam)
+        planetVCam1.Priority = (isPlanetNull ? 1 : 10);
+        mainVCam.Priority = (isPlanetNull ? 10 : 1);
+
+        // Set variables to move the right cam correctly
+        currPlanetInFocus = planet;
+        currVCam = (isPlanetNull ? mainVCam : planetVCam1);
     }
 }

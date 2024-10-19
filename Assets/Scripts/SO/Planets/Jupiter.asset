@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Jupiter
   m_EditorClassIdentifier: 
   planet: 4
+  facts:
+  - The largest planet in the solar system, a gas giant with a massive magnetic field.
+  - Famous for the Great Red Spot, a massive storm that has been raging for centuries.
+  - Has 79 moons, including Europa and Ganymede, which are of interest for potential
+    life exploration.
   mass: 1.89813e+27
   volume: 1.43128e+15
   radius: 69911

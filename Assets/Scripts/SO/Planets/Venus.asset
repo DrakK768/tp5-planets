@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Venus
   m_EditorClassIdentifier: 
   planet: 1
+  facts:
+  - "Often called Earth\u2019s twin due to its similar size and composition."
+  - Hottest planet due to a thick atmosphere of carbon dioxide causing a runaway
+    greenhouse effect.
+  - Its surface is covered with volcanoes and sulfuric acid clouds.
   mass: 4.8673e+24
   volume: 9.2843e+11
   radius: 6051.8

@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Mars
   m_EditorClassIdentifier: 
   planet: 3
+  facts:
+  - Known as the Red Planet due to iron oxide (rust) on its surface.
+  - Hosts the largest volcano in the solar system, Olympus Mons, and the longest
+    canyon, Valles Marineris.
+  - A target for potential human exploration due to its relatively mild conditions
+    and water ice presence.
   mass: 6.4169e+23
   volume: 1.6312e+11
   radius: 3389.5
