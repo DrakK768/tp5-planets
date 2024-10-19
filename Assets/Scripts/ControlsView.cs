@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UI.Dates;
@@ -36,6 +37,14 @@ public class ControlsView : MonoBehaviour
     void OnDestroy()
     {
         LevelData.controlsView = null;
+    }
+
+    public void OnManualDateEdit(string date)
+    {
+        if (isPaused)
+        {
+            LevelData.planetManager.Date = DateTime.ParseExact(date, "yyyy-MM-dd", null);
+        }
     }
 
     public void CheckRealScale(bool isChecked)

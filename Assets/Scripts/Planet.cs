@@ -28,6 +28,11 @@ public class Planet : MonoBehaviour
     }
     #endregion
 
+    void OnMouseUpAsButton()
+    {
+        LevelData.cameraController.FocusOn(this);
+    }
+
     void DrawEllipse()
     {
         float angle = 0f;

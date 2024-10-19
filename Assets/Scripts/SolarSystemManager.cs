@@ -62,7 +62,7 @@ public class SolarSystemManager : MonoBehaviour
         sun.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         foreach (Planet planet in planets)
         {
-            targetScale = PlanetData.GetPlanetRealSize(planet.SoPlanet) * (visible ? 1f : scaleFactor);  
+            targetScale = planet.SoPlanet.radius / PlanetData.kmToAu * (visible ? 1f : scaleFactor);  
             planet.transform.localScale = new Vector3(targetScale, targetScale, targetScale);
         }
     }
