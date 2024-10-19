@@ -14,6 +14,7 @@ public class CelestialInfoView : MonoBehaviour
     [SerializeField] TMP_Text gravity;
     [SerializeField] TMP_Text temp;
     [SerializeField] TMP_Text nbSatellites;
+    [SerializeField] TMP_Text navText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,26 +28,31 @@ public class CelestialInfoView : MonoBehaviour
         
     }
 
-    public void SetPlanetInfo(SOCelestial planet)
+    public void SetPlanetInfo(SOCelestial celestial)
     {
-        title.text = planet.name;
+        title.text = celestial.name;
         string factsText = "";
-        foreach (string fact in planet.facts)
+        foreach (string fact in celestial.facts)
         {
             factsText += "- " + fact + "\n";
         }
         facts.text = factsText;
-        mass.text = "Mass : " + planet.mass + " kg";
-        volume.text = "Volume : " + planet.volume + " km³";
-        radius.text = "Radius : " + planet.radius + " km";
-        gravity.text = "Mean Gravity : " + planet.meanGravity + " m/s²";
-        temp.text = "Mean Temperature : " + planet.meanTemp + " °C";
-        nbSatellites.text = "Number of satellites : " + planet.numberOfSatellites;
+        mass.text = "Mass : " + celestial.mass + " kg";
+        volume.text = "Volume : " + celestial.volume + " km³";
+        radius.text = "Radius : " + celestial.radius + " km";
+        gravity.text = "Mean Gravity : " + celestial.meanGravity + " m/s²";
+        temp.text = "Mean Temperature : " + celestial.meanTemp + " °C";
+        nbSatellites.text = "Number of satellites : " + celestial.numberOfSatellites;
         SetVisible(true);
 
         // Coroutine to delay text fitting for a frame
         // Otherwise UI elements are not updated yet when fetching their preferred sizes
         StartCoroutine(ResizeToFitText());
+    }
+
+    public void SetIndex(int index)
+    {
+        navText.text = index + " of " + LevelData.planetManager.InteractablesCount();
     }
 
     public void SetVisible(bool visible)
@@ -59,6 +65,18 @@ public class CelestialInfoView : MonoBehaviour
     {
         SetVisible(false);
         LevelData.cameraController.FocusOn(null);
+    }
+
+    // Linked to previous celestial button
+    public void PrevCelestial()
+    {
+        LevelData.cameraController.FocusOnPrev();
+    }
+    
+    // Linked to next celestial button
+    public void NextCelestial()
+    {
+        LevelData.cameraController.FocusOnNext();
     }
 
     IEnumerator ResizeToFitText()

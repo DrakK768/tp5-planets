@@ -10,9 +10,9 @@ public class Interactable : MonoBehaviour
     public SOCelestial SoCelestial => soCelestial;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if (soCelestial == null && TryGetComponent<Planet>(out Planet planet))
+        if (soCelestial == null && TryGetComponent(out Planet planet))
             soCelestial = planet.SoPlanet;
     }
 

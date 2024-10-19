@@ -9,8 +9,8 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera mainVCam;
-    //TODO: pass from one planet to another directly (will need 2 planetVCam for smooth transition)
     [SerializeField] CinemachineVirtualCamera planetVCam1;
+    [SerializeField] CinemachineVirtualCamera planetVCam2;
     [SerializeField] InputActionReference mouseClick;
     [SerializeField] InputActionReference mouseDelta;
     [SerializeField] InputActionReference mouseScrollWheel;
@@ -84,23 +84,36 @@ public class CameraController : MonoBehaviour
         if (celestial == currCelestialInFocus) return;
 
         bool isPlanetNull = (celestial == null);
+        CinemachineVirtualCamera subVCam = (currVCam == planetVCam1 ? planetVCam2 : planetVCam1);
         
         if (!isPlanetNull)
         {
             // If a planet is selected, set subCam to this planet
-            planetVCam1.transform.SetParent(celestial.transform);
-            planetVCam1.transform.localScale = new Vector3(1, 1, 1);
-            planetVCam1.transform.localPosition = (mainVCam.transform.position - celestial.transform.position).normalized * 2;
-            planetVCam1.transform.LookAt(celestial.transform.position);
+            subVCam.transform.SetParent(celestial.transform);
+            subVCam.transform.localScale = new Vector3(1, 1, 1);
+            subVCam.transform.localPosition = (currVCam.transform.position - celestial.transform.position).normalized * 2;
+            subVCam.transform.LookAt(celestial.transform.position);
             celestialInfoView.SetPlanetInfo(celestial.SoCelestial);
+            celestialInfoView.SetIndex(LevelData.planetManager.IndexOfInteractable(celestial) + 1);
         }
 
         // Set which cam is active depending on selection (bigger priority = active cam)
-        planetVCam1.Priority = (isPlanetNull ? 1 : 10);
+        currVCam.Priority = 1;
+        subVCam.Priority = (isPlanetNull ? 1 : 10);
         mainVCam.Priority = (isPlanetNull ? 10 : 1);
 
         // Set variables to move the right cam correctly
         currCelestialInFocus = celestial;
-        currVCam = (isPlanetNull ? mainVCam : planetVCam1);
+        currVCam = (isPlanetNull ? mainVCam : subVCam);
+    }
+
+    public void FocusOnPrev()
+    {
+        FocusOn(LevelData.planetManager.PrevInteractable(currCelestialInFocus));
+    }
+
+    public void FocusOnNext()
+    {
+        FocusOn(LevelData.planetManager.NextInteractable(currCelestialInFocus));
     }
 }
